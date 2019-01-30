@@ -77,6 +77,12 @@ async function main(
 
 module.exports = async (req: IncomingMessage, res: ServerResponse) => {
   const body = await readBody<IUpdate>(req);
+  if (!body.message || !body.message.text) {
+    res.writeHead(400);
+    res.end();
+    return;
+  }
+
   const [stop, lineRefs, alertWhen] = body.message.text.split(" ");
 
   main(
