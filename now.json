@@ -1,1 +1,10 @@
-{}
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "./src/**/*.ts",
+      "use": "@now/node@canary"
+    }
+  ],
+  "routes": [{ "src": "/", "dest": "/src/index.ts" }]
+}
